@@ -33,15 +33,6 @@ namespace Kamalov_AutoService
             UpdateServices();
         }
 
-        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateServices();
-        }
-     
-        
-
-
-
         private void UpdateServices()
         {
             var currentServices = KamalovEntities.GetContext().Service.ToList();
@@ -82,14 +73,20 @@ namespace Kamalov_AutoService
             {
                 currentServices = currentServices.OrderBy(p => p.Cost).ToList();
             }
+
+            ServiceListView.ItemsSource = currentServices;
         }
-       
-
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AddEditPage());
         }
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateServices();
+        }
+
+        
 
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
