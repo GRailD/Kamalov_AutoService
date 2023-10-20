@@ -14,9 +14,41 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <TextBlock Text="Введите название для поиска " TextAlignment="Right"
+                           Width="300" FontSize="20"></TextBlock>
+                <TextBox Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged"
+                         Width="300" FontSize="15"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Выберите название для поиска " TextAlignment="Right"
+                           Width="300" FontSize="15"></TextBlock>
+                <ComboBox Name="ComboType" SelectionChanged="ComboType_SelectionChanged"
+                          FontSize="15" Width="200">
+                    <TextBlock>Все</TextBlock>
+                    <TextBlock>от 0 до 5%</TextBlock>
+                    <TextBlock>от 5 до 15%</TextBlock>
+                    <TextBlock>от 15 до 30%</TextBlock>
+                    <TextBlock>от 30 до 75%</TextBlock>
+                    <TextBlock>от 75 до 100%</TextBlock>
+                    
+                </ComboBox>
+            </StackPanel>
+        </WrapPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
+            <RadioButton Content="По возрастанию стоимости " GroupName="Sort"
+                         Width="300" FontSize="20" Checked="RButtonUp_Checked"
+                         Name="RButtonUp"></RadioButton>
+            <RadioButton Content="По убыванию стоимости" GroupName="Sort"
+                         Width="300" FontSize="20" Checked="RButtonDown_Checked"
+                         Name="RButtonDown"></RadioButton>
+        </StackPanel>
         
-            
-        <ListView Name="ServiceListView" RenderTransformOrigin="0.507,0.489" >
+        
+        
+        <ListView Name="ServiceListView" Grid.Row="2" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
